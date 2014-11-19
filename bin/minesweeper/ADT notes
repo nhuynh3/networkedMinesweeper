@@ -1,0 +1,55 @@
+ADT supports operations on the board
+
+
+client <-> server relationship
+look - return the board printout
+help - return a help message 
+bye - return a bye message and terminates connection
+
+
+Setters:
+flag
+deflag
+
+Producers:
+dig
+
+
+=====================================
+
+ENUM: flagged, Dug, Untouched (w/Bomb or No Bomb)
+
+class Board:
+	this.Board = Box_Class[][]	
+	
+	Box_Class = attribute-value pairs
+	^---create a new Box_Class each time we call a method to update the board
+	Synchronize mutations on the box itself by using the this as a lock
+		attributes:
+			location
+			state - untouched, flagged, dug
+			hasBomb - true, false
+			bombCount - 
+			neighbors (locations)
+			parent
+	
+	 Board = Box_Class[][]
+	 ^---synchronize this since its getting passed between clients, and getting mutated.
+	 --thread safe: everything mutation that updates sections of the board requires the 2d array as its lock
+	 
+	 	methods:
+	 		Dig(x,y):
+	 			if bomb:
+	 			//TODO
+	 			else if no bomb:
+	 				set as dug
+	 				Dig_helper(x,y)
+	 				
+	 		Dig_helper(x,y):
+	 			c<-count neighbor bombs
+	 				(x,y).bombCount <- c
+	 				if c == 0:
+	 					for neighbors:
+	 						n.dugState <- dug
+	 						Dig_helper(n.location)
+	 				

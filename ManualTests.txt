@@ -1,0 +1,28 @@
+MineSweeper Server Tests
+
+Partition:
+	Initialize server with no arguments
+					  with size argument
+					  with debug
+					  with port
+					  
+	Test digging on server:
+		-digging inside the board
+		-digging at dimensions outside the board
+		-digging a board of size 2x2, in debug mode
+			--> make sure you see a BOOM! followed by a board printout
+	
+	Test flagging, deflagging, looking, help, and bye	
+		
+	Test invalid commands
+	
+	Test server with >1 clients
+		-P1 flag, P2 dig
+		-P1 flag, P2 dig, P1 unflag
+		-P1 dig/flag/unflag, P2 look
+		
+	
+	
+	
+	
+	
